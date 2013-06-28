@@ -16,9 +16,9 @@ BOOL WINAPI DllMain(
 {
     WINE_TRACE(" ( %p %d )\n", instance, reason);
     if(reason == DLL_PROCESS_ATTACH) {
-        void *lib = Steamclient_load();
+        int ret = Steamclient_load();
 
-        if(lib) {
+        if(ret) {
             WINE_TRACE("Loaded steamclient.so\n");
             return TRUE;
         } else {
