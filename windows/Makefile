@@ -33,6 +33,7 @@ steamclient_dll_CXX_SRCS  = steamclient.cpp \
 							SteamAppTicket001.cpp \
 							SteamUser016.cpp \
 							SteamUtils005.cpp \
+							SteamClient007.cpp \
 							SteamClient008.cpp \
 							SteamClient012.cpp
 steamclient_dll_RC_SRCS   =

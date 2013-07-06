@@ -33,6 +33,7 @@ native_dll_CXX_SRCS   = native_steamclient.cpp \
 						SteamUser016.linux.cpp \
 						SteamUtils005.linux.cpp \
 						SteamAppTicket001.linux.cpp \
+						SteamClient007.linux.cpp \
 						SteamClient008.linux.cpp \
 						SteamClient012.linux.cpp
 native_dll_RC_SRCS    =

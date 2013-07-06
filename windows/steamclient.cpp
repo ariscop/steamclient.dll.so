@@ -22,6 +22,10 @@ STEAM_CALL void* CreateInterface( const char *pName, int *pReturnCode )
         void *iface = Native_CreateInterface(pName, pReturnCode);
         return Native008_wrapInterface((ISteamClient008*)iface);
     }
+    if(strcmp("SteamClient007", pName) == 0) {
+        void *iface = Native_CreateInterface(pName, pReturnCode);
+        return Native007_wrapInterface((ISteamClient007*)iface);
+    }
     
     if(pReturnCode)
         *pReturnCode = 1;
