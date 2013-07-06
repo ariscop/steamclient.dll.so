@@ -4,12 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 
-//"Local\\SteamStart_SharedMemLock"
-//"Local\\SteamStart_SharedMemFile"
-
 int main(int argc, char *argv[]) {
 	DWORD pid = GetCurrentProcessId();
-
+    HANDLE handle;
     HKEY ActiveProcess;
     
     long ret;
@@ -32,32 +29,35 @@ int main(int argc, char *argv[]) {
         REG_SZ,
         "C:\\Program Files\\Steam\\steamclient.dll",
         strlen("C:\\Program Files\\Steam\\steamclient.dll")
-/*        "C:\\Windows\\System32\\steamclient.dll",
-        strlen("C:\\Windows\\System32\\steamclient.dll")*/
     );
     if(ret != ERROR_SUCCESS) goto error;
-    
-//    ret = RegSetValueEx(
-//        ActiveProcess,
-//        "Universe", 0,
-//        REG_SZ, "Public", strlen("Public")
-//    );
-//    if(ret != ERROR_SUCCESS) goto error;
     
     ret = RegSetValueEx(
         ActiveProcess,
         "pid", 0,
-        REG_DWORD, &pid, sizeof(pid)
+        REG_DWORD, (BYTE*)&pid, sizeof(pid)
     );
     if(ret != ERROR_SUCCESS) goto error;
     
     RegCloseKey(ActiveProcess);
     
-//    CreateMutexEx(
-//        NULL,
-//        "Local\\SteamStart_SharedMemLock",
-//        0, 0
-//    );
+    handle = CreateEventA(
+        NULL,
+        TRUE,
+        FALSE,
+        "Local\\SteamStart_SharedMemLock"
+    );
+    if(handle == NULL)
+        printf("Warning: failed to create SteamStart_SharedMemLock");
+    handle = CreateFileMappingA(
+        INVALID_HANDLE_VALUE,
+        NULL,
+        PAGE_READWRITE, 0,
+        0x1000, //4KB
+        "Local\\SteamStart_SharedMemFile"
+    );
+    if(handle == NULL)
+        printf("Warning: failed to create SteamStart_SharedMemFile");
     
     printf("Started steam imitator, pid %d\n", pid);
     fflush(stdout);
