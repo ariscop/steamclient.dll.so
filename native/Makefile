@@ -28,9 +28,8 @@ LIBRARIES             = -ldl -lstdc++
 ### native_steamclient.dll sources and settings
 
 native_dll_MODULE     = native_steamclient.dll
-native_dll_C_SRCS     = native_main.c
-native_dll_CXX_SRCS   = loader.cpp \
-						native_steamclient.cpp \
+native_dll_C_SRCS     = native_main.c loader.c
+native_dll_CXX_SRCS   = native_steamclient.cpp \
 						SteamUser016.linux.cpp \
 						SteamUtils005.linux.cpp \
 						SteamAppTicket001.linux.cpp \
