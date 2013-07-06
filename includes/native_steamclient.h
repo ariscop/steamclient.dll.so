@@ -2,6 +2,7 @@
 #include "SteamUser016.h"
 #include "SteamUtils005.h"
 #include "SteamAppTicket001.h"
+#include "SteamClient007.h"
 #include "SteamClient008.h"
 #include "SteamClient012.h"
 
