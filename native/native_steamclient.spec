@@ -85,10 +85,8 @@
 @ cdecl Native012_BShutdownIfAllPipesClosed(ptr)
 @ cdecl Native012_GetISteamHTTP(ptr ptr ptr ptr)
 @ cdecl Native012_GetISteamUnifiedMessages(ptr ptr ptr ptr)
-@ cdecl Native012_delete(ptr)
 
 @ cdecl NativeAppTicket001_GetAppOwnershipTicketData(ptr long ptr ptr ptr ptr ptr ptr)
-@ cdecl NativeAppTicket001_delete(ptr)
                                 
 @ cdecl NativeUtils005_GetSecondsSinceAppActive(ptr)
 @ cdecl NativeUtils005_GetSecondsSinceComputerActive(ptr)
@@ -113,7 +111,6 @@
 @ cdecl NativeUtils005_ShowGamepadTextInput(ptr long long ptr long)
 @ cdecl NativeUtils005_GetEnteredGamepadTextLength(ptr)
 @ cdecl NativeUtils005_GetEnteredGamepadTextInput(ptr ptr long)
-@ cdecl NativeUtils005_delete(ptr)
 
 @ cdecl NativeUser016_GetHSteamUser(ptr)
 @ cdecl NativeUser016_BLoggedOn(ptr)
@@ -137,5 +134,4 @@
 @ cdecl NativeUser016_AdvertiseGame(ptr ptr long long)
 @ cdecl NativeUser016_RequestEncryptedAppTicket(ptr ptr long)
 @ cdecl NativeUser016_GetEncryptedAppTicket(ptr ptr long ptr)
-@ cdecl NativeUser016_delete(ptr)
 

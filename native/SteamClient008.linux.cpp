@@ -3,11 +3,6 @@
 #include <wine/debug.h>
 WINE_DEFAULT_DEBUG_CHANNEL(steamclient);
 
-void Native008_delete(ISteamClient008 *orig) {
-	WINE_TRACE("\n");
-	delete orig;
-}
-
 HSteamPipe Native008_CreateSteamPipe(ISteamClient008 *orig) {
     WINE_TRACE("\n");
     return orig->CreateSteamPipe();

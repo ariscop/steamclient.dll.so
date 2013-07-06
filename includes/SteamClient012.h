@@ -28,5 +28,4 @@ extern "C" {
     extern ISteamUnifiedMessages* Native012_GetISteamUnifiedMessages(ISteamClient012 *orig, HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion);
     
     extern void *Native012_wrapInterface(ISteamClient012 *iface);
-    extern void Native012_delete(ISteamClient012 *iface);
 }

@@ -26,5 +26,4 @@ extern "C" {
 	extern bool NativeUser016_GetEncryptedAppTicket(ISteamUser016 *orig, void *pTicket, int cbMaxTicket, uint32 *pcbTicket);
     
     extern void *NativeUser016_wrapInterface(ISteamUser016 *iface);
-    extern void NativeUser016_delete(ISteamUser016 *iface);
 }

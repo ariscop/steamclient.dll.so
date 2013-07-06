@@ -1,5 +1,7 @@
 #include "SteamUser016.h"
 
+static ISteamUser016 *orig;
+
 class LoggedSteamUser016 : public ISteamUser016 {
 public:
 	virtual HSteamUser GetHSteamUser() {
@@ -98,16 +100,13 @@ public:
 	virtual bool GetEncryptedAppTicket( void *pTicket, int cbMaxTicket, uint32 *pcbTicket ) {
 		return NativeUser016_GetEncryptedAppTicket(orig, pTicket, cbMaxTicket, pcbTicket);
 	}
-    
-    LoggedSteamUser016(ISteamUser016 *_orig) {
-        orig = _orig;
-    }
 
-private:
-    ISteamUser016 *orig;
 };
 
+static LoggedSteamUser016 client;
+
 void *NativeUser016_wrapInterface(ISteamUser016 *iface) {
-    return new LoggedSteamUser016(iface);
+    orig = iface;
+    return &client;
 };
 

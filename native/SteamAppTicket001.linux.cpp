@@ -3,11 +3,6 @@
 #include <wine/debug.h>
 WINE_DEFAULT_DEBUG_CHANNEL(steamclient);
 
-void NativeAppTicket001_delete(ISteamAppTicket001 *orig) {
-    WINE_TRACE("\n");
-    delete orig;
-}
-
 uint32 NativeAppTicket001_GetAppOwnershipTicketData(
     ISteamAppTicket001 *orig,
     AppId_t nAppId,

@@ -1,5 +1,7 @@
 #include "SteamUtils005.h"
 
+static ISteamUtils005 *orig;
+
 class LoggedSteamUtils005 : public ISteamUtils005
 {
 public:
@@ -94,19 +96,12 @@ public:
 	virtual bool GetEnteredGamepadTextInput( char *pchValue, uint32 cchValueMax ) {
 		return NativeUtils005_GetEnteredGamepadTextInput(orig, pchValue, cchValueMax);
 	}
-    
-    LoggedSteamUtils005(ISteamUtils005 *_orig) {
-        orig = _orig;
-    }
-    
-    ~LoggedSteamUtils005() {
-        NativeUtils005_delete(orig);
-    }
 
-private:
-    ISteamUtils005 *orig;
 };
 
+static LoggedSteamUtils005 client;
+
 void *NativeUtils005_wrapInterface(ISteamUtils005 *iface) {
-    return new LoggedSteamUtils005(iface);
+    orig = iface;
+    return &client;
 };

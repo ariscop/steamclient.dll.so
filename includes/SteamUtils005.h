@@ -26,5 +26,4 @@ extern "C" {
 	extern bool NativeUtils005_GetEnteredGamepadTextInput(ISteamUtils005 *orig, char *pchValue, uint32 cchValueMax );
     
     extern void *NativeUtils005_wrapInterface(ISteamUtils005 *iface);
-    extern void NativeUtils005_delete(ISteamUtils005 *iface);
 }

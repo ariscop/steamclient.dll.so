@@ -3,11 +3,6 @@
 #include <wine/debug.h>
 WINE_DEFAULT_DEBUG_CHANNEL(steamclient);
 
-void NativeUser016_delete(ISteamUser016 *orig) {
-	WINE_TRACE("\n");
-	delete orig;
-}
-
 HSteamUser NativeUser016_GetHSteamUser(ISteamUser016 *orig) {
 	WINE_TRACE("\n");
 	return orig->GetHSteamUser();

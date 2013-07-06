@@ -24,5 +24,4 @@ extern "C" {
     extern void Native008_SetWarningMessageHook(ISteamClient008 *orig, SteamAPIWarningMessageHook_t pFunction);
     
     extern void *Native008_wrapInterface(ISteamClient008 *iface);
-    extern void Native008_delete(ISteamClient008 *iface);
 }

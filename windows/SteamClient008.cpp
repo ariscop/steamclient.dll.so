@@ -26,11 +26,13 @@ public:
 	};
 
 	virtual ISteamUser *GetISteamUser( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamUser(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamUser(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamGameServer *GetISteamGameServer( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamGameServer(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamGameServer(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual void SetLocalIPBinding( uint32 unIP, uint16 usPort ) {
@@ -38,43 +40,53 @@ public:
 	};
  
 	virtual ISteamFriends *GetISteamFriends( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamFriends(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamFriends(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamUtils *GetISteamUtils( HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamUtils(orig, hSteamPipe, pchVersion);
+		//return Native008_GetISteamUtils(orig, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamMatchmaking *GetISteamMatchmaking( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamMatchmaking(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamMatchmaking(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamMasterServerUpdater *GetISteamMasterServerUpdater( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamMasterServerUpdater(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamMasterServerUpdater(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamMatchmakingServers *GetISteamMatchmakingServers( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamMatchmakingServers(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamMatchmakingServers(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual void *GetISteamGenericInterface( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamGenericInterface(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamGenericInterface(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamUserStats *GetISteamUserStats( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamUserStats(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamUserStats(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamApps *GetISteamApps( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamApps(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamApps(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamNetworking *GetISteamNetworking( HSteamUser hSteamUser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamNetworking(orig, hSteamUser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamNetworking(orig, hSteamUser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual ISteamRemoteStorage *GetISteamRemoteStorage( HSteamUser hSteamuser, HSteamPipe hSteamPipe, const char *pchVersion ) {
-		return Native008_GetISteamRemoteStorage(orig, hSteamuser, hSteamPipe, pchVersion);
+		//return Native008_GetISteamRemoteStorage(orig, hSteamuser, hSteamPipe, pchVersion);
+		return NULL;
 	};
 
 	virtual void RunFrame() {
@@ -89,24 +101,11 @@ public:
 		Native008_SetWarningMessageHook(orig, pFunction);
 	};
 
-/*    
-    LoggedSteamClient008(ISteamClient008 *_orig) {
-        orig = _orig;
-    }
-
-    ~LoggedSteamClient008() {
-        Native008_delete(orig);
-    }
-
-private:
-    ISteamClient008 *orig;
-*/
 };
 
 static LoggedSteamClient008 client;
 
 void *Native008_wrapInterface(ISteamClient008 *iface) {
-//    return new LoggedSteamClient008(iface);
     orig = iface;
     return &client;
 };

@@ -1,5 +1,7 @@
 #include "SteamAppTicket001.h"
 
+static ISteamAppTicket001 *orig;
+
 class LoggedSteamAppTicket001 : public ISteamAppTicket001
 {
 public:
@@ -24,20 +26,13 @@ public:
             pcbSignature
         );
     }
-    
-    LoggedSteamAppTicket001(ISteamAppTicket001 *_orig) {
-        orig = _orig;
-    }
-    
-    ~LoggedSteamAppTicket001() {
-        NativeAppTicket001_delete(orig);
-    }
 
-private:
-    ISteamAppTicket001 *orig;
 };
 
+static LoggedSteamAppTicket001 client;
+
 void *NativeAppTicket001_wrapInterface(ISteamAppTicket001 *iface) {
-    return new LoggedSteamAppTicket001(iface);
+    orig = iface;
+    return &client;
 };
 
